@@ -1,0 +1,338 @@
+{
+  "openstack.enable": {
+    "declarations": [
+      {
+        "channelPath": "/module/provider.nix",
+        "path": "module/provider.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/provider.nix"
+      }
+    ],
+    "default": false,
+    "description": "Whether to enable openstack provider\nSee https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs for documentation.\n.",
+    "example": true,
+    "loc": [
+      "openstack",
+      "enable"
+    ],
+    "readOnly": false,
+    "type": "boolean"
+  },
+  "openstack.export.nix": {
+    "declarations": [
+      {
+        "channelPath": "/module/export.nix",
+        "path": "module/export.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/export.nix"
+      }
+    ],
+    "default": null,
+    "description": "Export openstack information as nix file.\nUseful when if you want to import run a NixOs\nscript after the terraform.\n",
+    "loc": [
+      "openstack",
+      "export",
+      "nix"
+    ],
+    "readOnly": false,
+    "type": "null or string"
+  },
+  "openstack.provider.authUrl": {
+    "declarations": [
+      {
+        "channelPath": "/module/provider.nix",
+        "path": "module/provider.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/provider.nix"
+      }
+    ],
+    "default": "${ admin }",
+    "description": "The identity authentication URL. If omitted, the\nOS_AUTH_URL environment variable is used.\n",
+    "loc": [
+      "openstack",
+      "provider",
+      "authUrl"
+    ],
+    "readOnly": false,
+    "type": "string"
+  },
+  "openstack.provider.cloud": {
+    "declarations": [
+      {
+        "channelPath": "/module/provider.nix",
+        "path": "module/provider.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/provider.nix"
+      }
+    ],
+    "default": "garr-pa1",
+    "description": "An entry in a clouds.yaml file. See the OpenStack\ndocumentation for more information about.\nRequired if authUrl is not specified.\n",
+    "loc": [
+      "openstack",
+      "provider",
+      "cloud"
+    ],
+    "readOnly": false,
+    "type": "string"
+  },
+  "openstack.provider.credId": {
+    "declarations": [
+      {
+        "channelPath": "/module/provider.nix",
+        "path": "module/provider.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/provider.nix"
+      }
+    ],
+    "default": "${ admin }",
+    "description": "The ID of an application credential to authenticate with.\nA credSecret has to be set along with this parameter.\n",
+    "loc": [
+      "openstack",
+      "provider",
+      "credId"
+    ],
+    "readOnly": false,
+    "type": "string"
+  },
+  "openstack.provider.credSecret": {
+    "declarations": [
+      {
+        "channelPath": "/module/provider.nix",
+        "path": "module/provider.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/provider.nix"
+      }
+    ],
+    "default": "${ pwd }",
+    "description": "The secret of an application credential to authenticate\nwith. Required by credId.\n",
+    "loc": [
+      "openstack",
+      "provider",
+      "credSecret"
+    ],
+    "readOnly": false,
+    "type": "string"
+  },
+  "openstack.provider.region": {
+    "declarations": [
+      {
+        "channelPath": "/module/provider.nix",
+        "path": "module/provider.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/provider.nix"
+      }
+    ],
+    "default": "${ admin }",
+    "description": "The region of the OpenStack cloud to use.\n",
+    "loc": [
+      "openstack",
+      "provider",
+      "region"
+    ],
+    "readOnly": false,
+    "type": "string"
+  },
+  "openstack.server": {
+    "declarations": [
+      {
+        "channelPath": "/module/server.nix",
+        "path": "module/server.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/server.nix"
+      }
+    ],
+    "default": {},
+    "description": "servers deployed to openstack.\n",
+    "loc": [
+      "openstack",
+      "server"
+    ],
+    "readOnly": false,
+    "type": "attribute set of submodules"
+  },
+  "openstack.server.<name>.enable": {
+    "declarations": [
+      {
+        "channelPath": "/module/server.nix",
+        "path": "module/server.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/server.nix"
+      }
+    ],
+    "default": false,
+    "description": "Whether to enable Deploy server\n.",
+    "example": true,
+    "loc": [
+      "openstack",
+      "server",
+      "<name>",
+      "enable"
+    ],
+    "readOnly": false,
+    "type": "boolean"
+  },
+  "openstack.server.<name>.extraConfig": {
+    "declarations": [
+      {
+        "channelPath": "/module/server.nix",
+        "path": "module/server.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/server.nix"
+      }
+    ],
+    "default": {},
+    "description": "parameter of the openstack_server not covered yet.\n",
+    "loc": [
+      "openstack",
+      "server",
+      "<name>",
+      "extraConfig"
+    ],
+    "readOnly": false,
+    "type": "attribute set"
+  },
+  "openstack.server.<name>.flavor": {
+    "declarations": [
+      {
+        "channelPath": "/module/server.nix",
+        "path": "module/server.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/server.nix"
+      }
+    ],
+    "default": "m2.medium",
+    "description": "Flavor types.\n",
+    "loc": [
+      "openstack",
+      "server",
+      "<name>",
+      "flavor"
+    ],
+    "readOnly": false,
+    "type": "string"
+  },
+  "openstack.server.<name>.floatingIpPool": {
+    "declarations": [
+      {
+        "channelPath": "/module/server.nix",
+        "path": "module/server.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/server.nix"
+      }
+    ],
+    "default": "floating-ip",
+    "description": "A pool from the floating ip will be withdrawed.\n",
+    "loc": [
+      "openstack",
+      "server",
+      "<name>",
+      "floatingIpPool"
+    ],
+    "readOnly": false,
+    "type": "string"
+  },
+  "openstack.server.<name>.image": {
+    "declarations": [
+      {
+        "channelPath": "/module/server.nix",
+        "path": "module/server.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/server.nix"
+      }
+    ],
+    "default": "ubuntu-18.04",
+    "description": "image to spawn on the server\n",
+    "loc": [
+      "openstack",
+      "server",
+      "<name>",
+      "image"
+    ],
+    "readOnly": false,
+    "type": "string"
+  },
+  "openstack.server.<name>.name": {
+    "declarations": [
+      {
+        "channelPath": "/module/server.nix",
+        "path": "module/server.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/server.nix"
+      }
+    ],
+    "default": "‹name›",
+    "description": "Name of the server to deploy.\n",
+    "loc": [
+      "openstack",
+      "server",
+      "<name>",
+      "name"
+    ],
+    "readOnly": false,
+    "type": "string"
+  },
+  "openstack.server.<name>.networkId": {
+    "declarations": [
+      {
+        "channelPath": "/module/server.nix",
+        "path": "module/server.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/server.nix"
+      }
+    ],
+    "description": "A network id\n",
+    "loc": [
+      "openstack",
+      "server",
+      "<name>",
+      "networkId"
+    ],
+    "readOnly": false,
+    "type": "string"
+  },
+  "openstack.server.<name>.networks": {
+    "declarations": [
+      {
+        "channelPath": "/module/server.nix",
+        "path": "module/server.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/server.nix"
+      }
+    ],
+    "default": [
+      {
+        "port": "${openstack_networking_port_v2.test.id}"
+      }
+    ],
+    "description": "An array of one or more networks to attach to the instance.\n",
+    "loc": [
+      "openstack",
+      "server",
+      "<name>",
+      "networks"
+    ],
+    "readOnly": false,
+    "type": "list of attribute sets"
+  },
+  "openstack.server.<name>.provisioners": {
+    "declarations": [
+      {
+        "channelPath": "/module/server.nix",
+        "path": "module/server.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/server.nix"
+      }
+    ],
+    "default": [],
+    "description": "provision steps.\nremote-exec...\n",
+    "loc": [
+      "openstack",
+      "server",
+      "<name>",
+      "provisioners"
+    ],
+    "readOnly": false,
+    "type": "list of attribute sets"
+  },
+  "openstack.server.<name>.securityGroups": {
+    "declarations": [
+      {
+        "channelPath": "/module/server.nix",
+        "path": "module/server.nix",
+        "url": "https://github.com/heph2/terranix-openstack/tree/main/modulemodule/server.nix"
+      }
+    ],
+    "description": "A list of security groups ids.\n",
+    "loc": [
+      "openstack",
+      "server",
+      "<name>",
+      "securityGroups"
+    ],
+    "readOnly": false,
+    "type": "list of strings"
+  }
+}
