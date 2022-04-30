@@ -29,6 +29,14 @@ in
           A credSecret has to be set along with this parameter.
         '';        
       };
+      credIdFile = mkOption {
+        type = nullOr path;
+        default = null;
+        description = ''
+          File that contains the application credential id.
+          This option is mutual exclusive with credId option.
+        '';
+      };
       credSecret = mkOption {
         type = str;
         default = "\${ pwd }";
@@ -37,6 +45,14 @@ in
           with. Required by credId.
         '';        
       };
+      credSecretFile = mkOption {
+        type = nullOr path;
+        default = null;
+        description = ''
+          File that contains the application credential secret.
+          This option is mutual exclusive with credId option.
+        '';
+      };      
       region = mkOption {
         type = str;
         default = "\${ admin }";
@@ -56,15 +72,33 @@ in
     };
   };
 
-  config = mkMerge [
-    (mkIf cfg.enable {
-      provider.openstack = {
-        inherit (cfg.provider) region cloud;
-        authentication_url = cfg.provider.authUrl;
-        application_credential_id = cfg.provider.credId;
-        application_credential_secret = cfg.provider.credSecret;
-      };
-      terraform.required_providers.openstack.source = "terraform-provider-openstack/openstack";
-    })
-  ];
+  config =
+    mkMerge [
+      
+      (mkIf cfg.enable {
+        provider.openstack = {
+          inherit (cfg.provider) region cloud;
+          authentication_url = cfg.provider.authUrl;
+        };
+        terraform.required_providers.openstack.source = "terraform-provider-openstack/openstack";
+      })
+
+      (mkIf (cfg.provider.credSecretFile != null) {
+        provider.openstack.application_credential_secret = builtins.readFile cfg.provider.credSecretFile;
+      })
+
+      (mkIf (cfg.provider.credSecret != "") {
+        provider.openstack.application_credential_secret = cfg.provider.credSecret;
+      })
+
+      (mkIf (cfg.provider.credIdFile != null) {
+        provider.openstack.application_credential_id = builtins.readFile cfg.provider.credIdFile;
+      })
+
+      (mkIf (cfg.provider.credId != "") {
+        provider.openstack.application_credential_id = cfg.provider.credId;
+      })
+            
+    ];
+
 }

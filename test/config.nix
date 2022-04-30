@@ -12,8 +12,8 @@
     enable = true;
     provider = {
       authUrl = "";
-      credId = "";
-      credSecret = "";
+      credIdFile = ./segreto.txt;
+      credSecretFile = ./segreto.txt;
       region = "";
     };
     
