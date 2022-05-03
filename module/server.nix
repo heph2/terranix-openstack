@@ -38,7 +38,7 @@ in
           networks = mkOption {
             default = [
               {
-                port = "\${openstack_networking_port_v2.test.id}";
+                port = "\${openstack_networking_port_v2.test-port.id}";
               }
             ];
             type = listOf attrs;
@@ -76,7 +76,7 @@ in
           securityGroups = mkOption {
             type = listOf str;
             description = ''
-              A list of security groups ids.
+              A list of security group ids.
             '';
           };
           extraConfig = mkOption {
@@ -121,7 +121,7 @@ in
             value = {
               name = "${configuration.name}-port";
               network_id = configuration.networkId;
-              security_groups_ids = configuration.securityGroups;
+              security_group_ids = configuration.securityGroups;
             };
           })
           cfg;
