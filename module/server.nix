@@ -38,7 +38,7 @@ in
           networks = mkOption {
             default = [
               {
-                port = "\${openstack_networking_port_v2.test-port.id}";
+                port = "\${openstack_networking_port_v2.${name}-port.id}";
               }
             ];
             type = listOf attrs;
