@@ -78,7 +78,7 @@ in
       (mkIf cfg.enable {
         provider.openstack = {
           inherit (cfg.provider) region cloud;
-          authentication_url = cfg.provider.authUrl;
+          auth_url = cfg.provider.authUrl;
         };
         terraform.required_providers.openstack.source = "terraform-provider-openstack/openstack";
       })
