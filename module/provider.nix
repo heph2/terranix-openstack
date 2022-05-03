@@ -62,7 +62,7 @@ in
       };
       cloud = mkOption {
         type = str;
-        default = "garr-pa1";
+        default = "";
         description = ''
           An entry in a clouds.yaml file. See the OpenStack
           documentation for more information about.
@@ -77,12 +77,16 @@ in
       
       (mkIf cfg.enable {
         provider.openstack = {
-          inherit (cfg.provider) region cloud;
+          inherit (cfg.provider) region;
           auth_url = cfg.provider.authUrl;
         };
         terraform.required_providers.openstack.source = "terraform-provider-openstack/openstack";
       })
 
+      (mkIf (cfg.provider.cloud != "") {
+        provider.openstack.cloud = cfg.provider.cloud;
+      })
+      
       (mkIf (cfg.provider.credSecretFile != null) {
         provider.openstack.application_credential_secret = builtins.readFile cfg.provider.credSecretFile;
       })
