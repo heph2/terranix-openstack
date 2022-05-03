@@ -24,8 +24,7 @@ in {
                host = {
                  ipv4 = "''${ openstack_compute_instance_v2.${name}.access_ip_v4 }";
                  ipv6 = "''${ openstack_compute_instance_v2.${name}.access_ip_v6 }";
-                 ipv4-floating = "''${ openstack_compute_instance_v2.${name}.fixed_ip_v4 }";
-                 ipv6-floating = "''${ openstack_compute_instance_v2.${name}.fixed_ip_v6 }";
+                 ipv4-floating = "''${ openstack_networking_floatingip_v2.${name}-fip.fixed_ip }";
                };
                location = "''${ openstack_compute_instance_v2.${name}.region}";
              };
