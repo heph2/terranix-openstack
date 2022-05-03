@@ -96,7 +96,7 @@ in
     resource.openstack_compute_instance_v2 =
       let
         allUsers =
-          mapAttrsToList (name: ignore: "\${ openstack_compute_keypair_v2.${name}.id")
+          mapAttrsToList (name: ignore: "\${ openstack_compute_keypair_v2.${name}.id }")
             allAdmins;
         
         allResources = mapAttrs'
@@ -147,8 +147,8 @@ in
           (name: configuration: {
             name = "${configuration.name}-fip-associate";
             value = {
-              floating_ip = "\${ openstack_networking_floatingip_v2.${configuration.name}-fip.address";
-              instance_id = "\${ openstack_compute_instance_v2.${configuration.name}.id";
+              floating_ip = "\${ openstack_networking_floatingip_v2.${configuration.name}-fip.address }";
+              instance_id = "\${ openstack_compute_instance_v2.${configuration.name}.id }";
             };
           })
           cfg;
